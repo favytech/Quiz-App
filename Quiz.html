@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Multi-Page Quiz App</title>
+    <script src="Quiz.js" defer></script>
+    <script src="App.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        #app-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+    
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+    
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+    
+        button:hover {
+            background-color: #0056b3;
+        }
+    
+        #progress-bar {
+            transition: width 0.3s ease;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div id="app-container">
+        <div id="home-page">
+            <h1>Welcome to the Quiz App</h1>
+            <p>Select a category to get started:</p>
+            <button onclick="startQuiz('general')">General Knowledge</button>
+            <button onclick="startQuiz('tech')">Technology</button>
+            
+            <h3>High Scores</h3>
+            <ul id="high-scores-list"></ul>
+        </div>
+
+        <div id="quiz-page" class="hidden">
+            <h2 id="quiz-category"></h2>
+            <div>Question <span id="current-question-number">1</span> of <span id="total-questions">5</span></div>
+            <div class="progress-container">
+                <div id="progress-bar" style="width: 0%; height: 6px; background: #007BFF;"></div>
+            </div>
+            <div>Time left: <span id="timer">30</span>s</div>
+            <div id="question-text"></div>
+            <div id="options-container"></div>
+            <button onclick="nextQuestion()">Next</button>
+        </div>
+
+        <div id="results-page" class="hidden">
+            <h2>Quiz Completed</h2>
+            <p id="final-score"></p>
+            <button onclick="goHome()">Back to Home</button>
+        </div>
+    </div>
+</body>
+
+
+</html>
